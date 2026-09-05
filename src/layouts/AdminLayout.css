@@ -1,0 +1,274 @@
+.admin-layout {
+  min-height: 100vh;
+  display: flex;
+  background: #f4f6f9;
+  color: #17365d;
+}
+
+.admin-sidebar {
+  width: 290px;
+  min-width: 290px;
+  background: #ffffff;
+  border-right: 1px solid #e5e9ef;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 16px 16px;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 8px 24px;
+}
+
+.admin-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  background: #193b67;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-brand h1 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+  color: #17365d;
+}
+
+.admin-brand span {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px;
+  color: #8291a5;
+}
+
+.admin-navigation {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 4px;
+}
+
+.admin-nav-group {
+  margin-bottom: 22px;
+}
+
+.admin-nav-section {
+  padding: 0 12px 9px;
+  color: #91a0b4;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 46px;
+  margin-bottom: 4px;
+  padding: 0 14px;
+  border-radius: 10px;
+  color: #536b86;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.admin-nav-link:hover {
+  background: #f2f6fa;
+  color: #17365d;
+}
+
+.admin-nav-link.active {
+  background: #eaf1f8;
+  color: #17365d;
+  font-weight: 600;
+}
+
+.admin-sidebar-bottom {
+  border-top: 1px solid #e7ebf0;
+  padding-top: 16px;
+}
+
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 6px 8px 14px;
+}
+
+.admin-user-avatar {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  background: #edf3f8;
+  color: #4c6784;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-user-info {
+  min-width: 0;
+}
+
+.admin-user-info strong {
+  display: block;
+  color: #17365d;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.admin-user-info span {
+  display: block;
+  color: #8291a5;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-logout {
+  width: 100%;
+  height: 42px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #647891;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.admin-logout:hover {
+  background: #f4f6f9;
+  color: #17365d;
+}
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-header {
+  min-height: 112px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e9ef;
+  padding: 26px 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.admin-header h2 {
+  margin: 0;
+  color: #17365d;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.admin-header p {
+  margin: 6px 0 0;
+  color: #8190a4;
+  font-size: 14px;
+}
+
+.admin-header-role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border-radius: 9px;
+  background: #eef4f9;
+  color: #45617e;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 38px 42px;
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar {
+    width: 235px;
+    min-width: 235px;
+  }
+
+  .admin-header {
+    padding: 24px;
+  }
+
+  .admin-content {
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .admin-sidebar {
+    width: 78px;
+    min-width: 78px;
+    padding: 18px 10px;
+  }
+
+  .admin-brand {
+    justify-content: center;
+    padding: 0 0 22px;
+  }
+
+  .admin-brand > div:last-child,
+  .admin-nav-section,
+  .admin-nav-link span,
+  .admin-user-info,
+  .admin-logout span {
+    display: none;
+  }
+
+  .admin-nav-link {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .admin-user {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .admin-logout {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .admin-header {
+    min-height: 95px;
+    padding: 20px;
+  }
+
+  .admin-header h2 {
+    font-size: 23px;
+  }
+
+  .admin-header-role {
+    display: none;
+  }
+
+  .admin-content {
+    padding: 22px 18px;
+  }
+}

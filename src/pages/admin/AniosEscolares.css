@@ -1,0 +1,244 @@
+.anios-page {
+  width: 100%;
+}
+
+.anios-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.anios-header h1 {
+  margin: 0;
+  color: #173b68;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.anios-header p {
+  margin: 8px 0 0;
+  color: #7890aa;
+  font-size: 16px;
+}
+
+.anios-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  background: #173f70;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.anios-primary-button:hover {
+  background: #12345d;
+}
+
+.anios-secondary-button {
+  border: 1px solid #d5dfeb;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: white;
+  color: #49627e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.anios-card {
+  background: white;
+  border: 1px solid #e0e7ef;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 3px 12px rgba(31, 55, 80, 0.04);
+}
+
+.anios-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.anios-card-header h2 {
+  margin: 0;
+  color: #173b68;
+  font-size: 20px;
+}
+
+.anios-card-header p {
+  margin: 7px 0 0;
+  color: #8093a9;
+}
+
+.anios-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #72859a;
+  cursor: pointer;
+}
+
+.anios-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.anios-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.anios-field label {
+  color: #24476d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.anios-field input,
+.anios-field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #d7e0ea;
+  border-radius: 9px;
+  outline: none;
+  color: #193f6d;
+  background: white;
+  font-size: 15px;
+}
+
+.anios-field input:focus,
+.anios-field select:focus {
+  border-color: #6f91b5;
+  box-shadow: 0 0 0 3px rgba(80, 120, 160, 0.08);
+}
+
+.anios-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #edf1f5;
+}
+
+.anios-error {
+  margin-bottom: 20px;
+  padding: 13px 16px;
+  border: 1px solid #f1caca;
+  border-radius: 10px;
+  background: #fff2f2;
+  color: #bd3b3b;
+}
+
+.anios-empty {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #8295aa;
+  text-align: center;
+}
+
+.anios-empty strong {
+  color: #49627e;
+}
+
+.anios-table-wrapper {
+  overflow-x: auto;
+}
+
+.anios-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.anios-table th {
+  padding: 13px 14px;
+  border-bottom: 1px solid #e4eaf1;
+  color: #71869e;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.anios-table td {
+  padding: 16px 14px;
+  border-bottom: 1px solid #edf1f5;
+  color: #385573;
+  font-size: 14px;
+}
+
+.anios-table td strong {
+  color: #173f70;
+}
+
+.anios-status {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.anios-status-planificado {
+  background: #eef3f8;
+  color: #61768e;
+}
+
+.anios-status-activo {
+  background: #e8f6ed;
+  color: #287746;
+}
+
+.anios-status-cerrado {
+  background: #f0f1f3;
+  color: #69737e;
+}
+
+.anios-icon-button {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dbe3ec;
+  border-radius: 8px;
+  background: white;
+  color: #58718e;
+  cursor: pointer;
+}
+
+.anios-icon-button:hover {
+  background: #f3f7fb;
+}
+
+@media (max-width: 700px) {
+  .anios-header {
+    flex-direction: column;
+  }
+
+  .anios-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .anios-card {
+    padding: 20px;
+  }
+}

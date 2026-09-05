@@ -1,0 +1,477 @@
+.grados-page {
+  padding: 4px;
+}
+
+.grados-loading {
+  padding: 40px;
+  text-align: center;
+  color: #718096;
+}
+
+.grados-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.grados-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.grados-title-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf2ff;
+  color: #2864b0;
+}
+
+.grados-header h1 {
+  margin: 0;
+  color: #173f73;
+  font-size: 27px;
+}
+
+.grados-header p {
+  margin: 5px 0 0;
+  color: #718096;
+  font-size: 14px;
+}
+
+.grados-primary-button {
+  border: none;
+  border-radius: 10px;
+  padding: 11px 17px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #2864b0;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.grados-primary-button:hover {
+  background: #205493;
+}
+
+.grados-success,
+.grados-error {
+  padding: 12px 15px;
+  border-radius: 9px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+.grados-success {
+  background: #edf9f0;
+  color: #26733b;
+  border: 1px solid #ccebd4;
+}
+
+.grados-error {
+  background: #fff1f1;
+  color: #b42318;
+  border: 1px solid #f1cccc;
+}
+
+.grados-year-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: 0 3px 12px rgba(30, 50, 80, 0.06);
+  margin-bottom: 25px;
+}
+
+.grados-year-card label {
+  display: block;
+  color: #173f73;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.grados-year-card p {
+  margin: 0;
+  color: #718096;
+  font-size: 13px;
+}
+
+.grados-year-card select {
+  min-width: 230px;
+  padding: 10px 12px;
+  border: 1px solid #d9e1eb;
+  border-radius: 8px;
+  background: white;
+  color: #27364a;
+}
+
+.grados-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.grados-level {
+  background: transparent;
+}
+
+.grados-level-header {
+  margin-bottom: 12px;
+}
+
+.grados-level-header h2 {
+  margin: 0;
+  color: #173f73;
+  font-size: 20px;
+}
+
+.grados-level-header span {
+  color: #718096;
+  font-size: 13px;
+}
+
+.grados-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(290px, 1fr)
+  );
+  gap: 16px;
+}
+
+.grado-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 3px 12px rgba(30, 50, 80, 0.06);
+}
+
+.grado-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.grado-card-level {
+  color: #8190a5;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.grado-card h3 {
+  margin: 4px 0 0;
+  color: #26364b;
+  font-size: 17px;
+}
+
+.grado-add-button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: white;
+  color: #2864b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.grado-add-button:hover {
+  background: #f2f7fd;
+}
+
+.grado-secciones {
+  padding-top: 10px;
+}
+
+.grado-empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  color: #8a96a7;
+  font-size: 13px;
+}
+
+.grado-empty button {
+  border: none;
+  background: transparent;
+  color: #2864b0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seccion-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.seccion-row:last-child {
+  border-bottom: none;
+}
+
+.seccion-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seccion-letter {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: #eef4fb;
+  color: #2864b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.seccion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.seccion-info strong {
+  color: #334155;
+  font-size: 13px;
+}
+
+.seccion-info span {
+  color: #8491a3;
+  font-size: 12px;
+}
+
+.seccion-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seccion-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+.seccion-status.activo {
+  background: #eaf7ee;
+  color: #28753c;
+}
+
+.seccion-status.inactivo {
+  background: #f0f2f5;
+  color: #7a8492;
+}
+
+.seccion-edit-button {
+  width: 31px;
+  height: 31px;
+  border: 1px solid #dbe4ef;
+  border-radius: 7px;
+  background: white;
+  color: #66768b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.seccion-edit-button:hover {
+  color: #2864b0;
+  background: #f5f8fc;
+}
+
+.seccion-inactiva {
+  opacity: 0.65;
+}
+
+/* MODAL */
+
+.grados-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 30, 50, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.grados-modal {
+  width: min(500px, 100%);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(20, 35, 55, 0.2);
+  overflow: hidden;
+}
+
+.grados-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 22px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.grados-modal-header h2 {
+  margin: 0;
+  color: #173f73;
+  font-size: 20px;
+}
+
+.grados-modal-header p {
+  margin: 5px 0 0;
+  color: #718096;
+  font-size: 13px;
+}
+
+.grados-modal-close {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 8px;
+  background: #f3f5f8;
+  color: #65748a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.grados-form {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.grados-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #34445a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.grados-form input,
+.grados-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 11px;
+  border: 1px solid #d7e0eb;
+  border-radius: 8px;
+  background: white;
+  color: #29384d;
+  font-size: 14px;
+  outline: none;
+}
+
+.grados-form input:focus,
+.grados-form select:focus {
+  border-color: #6f9ed0;
+  box-shadow: 0 0 0 3px rgba(40, 100, 176, 0.08);
+}
+
+.grados-checkbox {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 9px !important;
+}
+
+.grados-checkbox input {
+  width: 16px;
+  height: 16px;
+}
+
+.grados-modal-footer {
+  padding: 16px 22px;
+  border-top: 1px solid #edf0f4;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.grados-cancel-button,
+.grados-save-button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.grados-cancel-button {
+  background: #f1f3f6;
+  color: #59677a;
+}
+
+.grados-save-button {
+  background: #2864b0;
+  color: white;
+}
+
+.grados-save-button:hover {
+  background: #205493;
+}
+
+.grados-save-button:disabled,
+.grados-cancel-button:disabled,
+.grados-modal-close:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .grados-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .grados-primary-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .grados-year-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .grados-year-card select {
+    width: 100%;
+  }
+
+  .grados-grid {
+    grid-template-columns: 1fr;
+  }
+}

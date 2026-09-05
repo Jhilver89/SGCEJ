@@ -1,0 +1,656 @@
+.matriculas-page {
+  padding: 28px 32px 40px;
+  color: #243b5a;
+}
+
+.matriculas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.matriculas-header h1 {
+  margin: 0 0 7px;
+  font-size: 27px;
+  color: #1f3658;
+}
+
+.matriculas-header p {
+  margin: 0;
+  color: #71839a;
+  font-size: 14px;
+}
+
+.matriculas-header-actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.matriculas-anio-selector label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #71839a;
+  font-weight: 600;
+}
+
+.select-icon-wrap {
+  position: relative;
+}
+
+.select-icon-wrap select {
+  min-width: 180px;
+  appearance: none;
+  padding: 10px 38px 10px 13px;
+  border: 1px solid #d9e2ec;
+  border-radius: 9px;
+  background: #fff;
+  color: #334e68;
+  outline: none;
+}
+
+.select-icon-wrap svg {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #71839a;
+}
+
+.matriculas-refresh {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d9e2ec;
+  border-radius: 9px;
+  background: #fff;
+  color: #3567a8;
+  cursor: pointer;
+}
+
+.matriculas-refresh:hover {
+  background: #f5f8fc;
+}
+
+.matriculas-alert {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 15px;
+  border-radius: 9px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.matriculas-alert-error {
+  background: #fff4f4;
+  border: 1px solid #f2c7c7;
+  color: #a32929;
+}
+
+.matriculas-alert-success {
+  background: #effaf3;
+  border: 1px solid #c7ead2;
+  color: #18723a;
+}
+
+.matriculas-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.matriculas-stat {
+  background: #fff;
+  border: 1px solid #e0e7ef;
+  border-radius: 12px;
+  padding: 17px 19px;
+  box-shadow: 0 2px 8px rgba(33, 52, 74, .04);
+}
+
+.matriculas-stat span {
+  display: block;
+  color: #71839a;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.matriculas-stat strong {
+  font-size: 25px;
+  color: #274b78;
+}
+
+.matriculas-stat.pendiente strong {
+  color: #b87913;
+}
+
+.matriculas-stat.confirmada strong {
+  color: #21834a;
+}
+
+.matriculas-stat.incompleta strong {
+  color: #b34b36;
+}
+
+.matriculas-card {
+  background: #fff;
+  border: 1px solid #e0e7ef;
+  border-radius: 13px;
+  box-shadow: 0 3px 12px rgba(33, 52, 74, .045);
+  overflow: hidden;
+}
+
+.matriculas-filtros {
+  display: grid;
+  grid-template-columns: minmax(250px, 1.8fr) repeat(4, minmax(140px, 1fr));
+  gap: 10px;
+  padding: 16px;
+  border-bottom: 1px solid #e6ecf2;
+  background: #fbfcfe;
+}
+
+.matriculas-buscador,
+.matriculas-filtro {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dce5ee;
+  border-radius: 8px;
+  background: #fff;
+  padding: 0 11px;
+}
+
+.matriculas-buscador svg,
+.matriculas-filtro svg {
+  flex-shrink: 0;
+  color: #7890aa;
+}
+
+.matriculas-buscador input,
+.matriculas-filtro select {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #425b77;
+  font-size: 13px;
+}
+
+.matriculas-filtro select {
+  cursor: pointer;
+}
+
+.matriculas-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.matriculas-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+}
+
+.matriculas-table th {
+  padding: 12px 14px;
+  background: #f2f6fa;
+  border-bottom: 1px solid #dce5ee;
+  color: #3b5571;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.matriculas-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #edf1f5;
+  color: #526b86;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.matriculas-table tbody tr:hover {
+  background: #f9fbfd;
+}
+
+.dni-cell {
+  font-weight: 700;
+  color: #2d5789 !important;
+}
+
+.estudiante-nombre strong {
+  color: #3d5874;
+  font-weight: 600;
+}
+
+.estado-badge,
+.propuesta-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.estado-pendiente,
+.propuesta-pendiente {
+  background: #fff7df;
+  color: #95630b;
+}
+
+.estado-matriculado,
+.estado-promovido,
+.propuesta-confirmada {
+  background: #eaf8ef;
+  color: #1d7540;
+}
+
+.estado-no_promovido,
+.estado-retirado,
+.estado-trasladado,
+.estado-egresado {
+  background: #edf3fa;
+  color: #476785;
+}
+
+.propuesta-rechazada {
+  background: #fff0f0;
+  color: #ad3434;
+}
+
+.matriculas-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #cddaea;
+  border-radius: 7px;
+  background: #fff;
+  color: #3567a8;
+  padding: 7px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.matriculas-action:hover {
+  background: #f2f7fd;
+}
+
+.matriculas-empty {
+  padding: 65px 25px;
+  text-align: center;
+  color: #7890a9;
+}
+
+.matriculas-empty svg {
+  color: #8aa2bc;
+}
+
+.matriculas-empty h3 {
+  margin: 13px 0 6px;
+  color: #405a76;
+  font-size: 16px;
+}
+
+.matriculas-empty p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.matriculas-modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(20, 34, 52, .48);
+}
+
+.matriculas-modal {
+  width: min(680px, 100%);
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(18, 36, 58, .2);
+  overflow: hidden;
+}
+
+.matriculas-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 22px 25px;
+  border-bottom: 1px solid #e6ecf2;
+}
+
+.matriculas-modal-header h2 {
+  margin: 0 0 5px;
+  color: #203958;
+  font-size: 20px;
+}
+
+.matriculas-modal-header p {
+  margin: 0;
+  color: #71839a;
+  font-size: 13px;
+}
+
+.matriculas-modal-close {
+  border: none;
+  background: transparent;
+  color: #7d8ea2;
+  cursor: pointer;
+}
+
+.matriculas-modal-body {
+  padding: 24px 25px;
+}
+
+.matricula-dato {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 13px;
+  margin-bottom: 18px;
+  background: #f6f9fc;
+  border: 1px solid #e3eaf1;
+  border-radius: 8px;
+}
+
+.matricula-dato span {
+  color: #71839a;
+  font-size: 12px;
+}
+
+.matricula-dato strong {
+  color: #31577f;
+  font-size: 13px;
+}
+
+.matricula-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.matricula-form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #4a627c;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.matricula-form-grid select {
+  width: 100%;
+  padding: 10px 11px;
+  border: 1px solid #d6e0ea;
+  border-radius: 8px;
+  background: #fff;
+  color: #405a76;
+  outline: none;
+}
+
+.matricula-modal-nota {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #f6f9fc;
+  border: 1px solid #e1e8ef;
+  color: #70849b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.matriculas-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 25px;
+  border-top: 1px solid #e6ecf2;
+  background: #fbfcfe;
+}
+
+.matriculas-btn-cancelar,
+.matriculas-btn-confirmar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.matriculas-btn-cancelar {
+  border: 1px solid #d5dfe9;
+  background: #fff;
+  color: #526a83;
+}
+
+.matriculas-btn-confirmar {
+  border: none;
+  background: #3567a8;
+  color: #fff;
+}
+
+.matriculas-btn-confirmar:disabled,
+.matriculas-btn-cancelar:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1100px) {
+  .matriculas-filtros {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .matriculas-buscador {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .matriculas-page {
+    padding: 20px 15px 30px;
+  }
+
+  .matriculas-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .matriculas-header-actions {
+    width: 100%;
+  }
+
+  .matriculas-anio-selector {
+    flex: 1;
+  }
+
+  .select-icon-wrap select {
+    width: 100%;
+  }
+
+  .matriculas-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .matriculas-filtros {
+    grid-template-columns: 1fr;
+  }
+
+  .matriculas-buscador {
+    grid-column: auto;
+  }
+
+  .matricula-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .matriculas-modal-footer {
+    flex-direction: column-reverse;
+  }
+
+  .matriculas-btn-cancelar,
+  .matriculas-btn-confirmar {
+    width: 100%;
+  }
+}
+
+.matriculas-boton-masivo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 9px;
+  background: #3567a8;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.matriculas-boton-masivo:hover {
+  background: #2f5d99;
+}
+
+.matriculas-boton-masivo:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.matriculas-modal-masivo {
+  max-width: 680px;
+}
+
+.matricula-masiva-resumen {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #dce6ef;
+  border-radius: 9px;
+  background: #f6f9fc;
+}
+
+.matricula-masiva-resumen strong {
+  font-size: 28px;
+  color: #315f96;
+}
+
+.matricula-masiva-resumen span,
+.matricula-masiva-texto {
+  color: #617790;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.matricula-masiva-texto {
+  margin: 0;
+}
+
+.matricula-resultados-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.matricula-resultados-grid > div {
+  padding: 15px;
+  border: 1px solid #e0e7ef;
+  border-radius: 9px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.matricula-resultados-grid strong {
+  display: block;
+  font-size: 25px;
+  color: #2d5789;
+  margin-bottom: 4px;
+}
+
+.matricula-resultados-grid span {
+  color: #71839a;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.matricula-errores {
+  border-top: 1px solid #e3eaf1;
+  padding-top: 17px;
+}
+
+.matricula-errores h3 {
+  margin: 0 0 10px;
+  color: #405a76;
+  font-size: 14px;
+}
+
+.matricula-errores-lista {
+  max-height: 230px;
+  overflow-y: auto;
+  border: 1px solid #e3eaf1;
+  border-radius: 8px;
+}
+
+.matricula-errores-lista > div {
+  display: flex;
+  gap: 12px;
+  padding: 9px 11px;
+  border-bottom: 1px solid #edf1f5;
+  font-size: 12px;
+}
+
+.matricula-errores-lista > div:last-child {
+  border-bottom: none;
+}
+
+.matricula-errores-lista strong {
+  min-width: 80px;
+  color: #31577f;
+}
+
+.matricula-errores-lista span {
+  color: #71839a;
+}
+
+.matricula-errores > p {
+  margin: 8px 0 0;
+  color: #8494a6;
+  font-size: 11px;
+}
+
+@media (max-width: 760px) {
+  .matriculas-header-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .matriculas-boton-masivo,
+  .matriculas-refresh {
+    width: 100%;
+  }
+
+  .matricula-resultados-grid {
+    grid-template-columns: 1fr;
+  }
+}
