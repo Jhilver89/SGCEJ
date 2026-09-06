@@ -25,42 +25,151 @@ function Login() {
     setError('')
 
     if (!email.trim() || !password) {
-      setError('Ingresa tu correo electrónico y contraseña.')
+      setError(
+        'Ingresa tu correo electrónico y contraseña.'
+      )
       return
     }
 
     setLoading(true)
 
-    const { error: loginError } =
-      await supabase.auth.signInWithPassword({
-        email: email.trim(),
-        password,
-      })
+    try {
+      const { data, error: loginError } =
+        await supabase.auth.signInWithPassword({
+          email: email.trim(),
+          password,
+        })
 
-    if (loginError) {
-      console.error('ERROR LOGIN SUPABASE:', loginError)
+      if (loginError) {
+        console.error(
+          'ERROR LOGIN SUPABASE:',
+          loginError
+        )
 
-      setError(loginError.message)
+        setError(loginError.message)
+        setLoading(false)
+        return
+      }
+
+      const usuario = data?.user
+
+      if (!usuario) {
+        setError(
+          'No se pudo obtener la información del usuario.'
+        )
+
+        setLoading(false)
+        return
+      }
+
+      console.log('LOGIN CORRECTO')
+
+      // ==================================================
+      // OBTENER PERFIL Y ROL
+      // ==================================================
+
+      const { data: perfil, error: perfilError } =
+        await supabase
+          .from('perfiles')
+          .select(
+            'id, nombres, apellidos, email, rol, activo, institucion_id'
+          )
+          .eq('id', usuario.id)
+          .single()
+
+      if (perfilError) {
+        console.error(
+          'ERROR OBTENIENDO PERFIL:',
+          perfilError
+        )
+
+        await supabase.auth.signOut()
+
+        setError(
+          'No se pudo cargar el perfil del usuario.'
+        )
+
+        setLoading(false)
+        return
+      }
+
+      if (!perfil.activo) {
+        await supabase.auth.signOut()
+
+        setError(
+          'Tu usuario está inactivo. Comunícate con el administrador.'
+        )
+
+        setLoading(false)
+        return
+      }
+
+      // ==================================================
+      // REDIRECCIÓN SEGÚN ROL
+      // ==================================================
+
+      if (perfil.rol === 'administrador') {
+        console.log(
+          'REDIRECCIÓN: ADMINISTRADOR → /admin'
+        )
+
+        navigate('/admin', { replace: true })
+        return
+      }
+
+      if (perfil.rol === 'usuario') {
+        console.log(
+          'REDIRECCIÓN: USUARIO → /app'
+        )
+
+        navigate('/app', { replace: true })
+        return
+      }
+
+      // ==================================================
+      // ROL NO RECONOCIDO
+      // ==================================================
+
+      console.error(
+        'ROL NO RECONOCIDO:',
+        perfil.rol
+      )
+
+      await supabase.auth.signOut()
+
+      setError(
+        'El usuario no tiene un rol válido configurado.'
+      )
+
       setLoading(false)
+    } catch (error) {
+      console.error('ERROR INESPERADO LOGIN:', error)
 
-      return
+      await supabase.auth.signOut()
+
+      setError(
+        'Ocurrió un error al iniciar sesión.'
+      )
+
+      setLoading(false)
     }
-
-    console.log('LOGIN CORRECTO')
-
-    navigate('/app')
   }
 
   return (
     <main className="login-page">
       <section className="login-card">
+
         <div className="login-brand">
           <div className="login-logo">
-            <ShieldCheck size={30} strokeWidth={2} />
+            <ShieldCheck
+              size={30}
+              strokeWidth={2}
+            />
           </div>
 
           <div>
             <h1>SGCE</h1>
+
             <span>
               Sistema de Gestión del Centro Educativo
             </span>
@@ -69,10 +178,17 @@ function Login() {
 
         <div className="login-heading">
           <h2>Bienvenido</h2>
-          <p>Ingresa tus credenciales para continuar.</p>
+
+          <p>
+            Ingresa tus credenciales para continuar.
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="login-form">
+        <form
+          onSubmit={handleSubmit}
+          className="login-form"
+        >
+
           <div className="form-group">
             <label htmlFor="email">
               Correo electrónico
@@ -104,7 +220,11 @@ function Login() {
 
               <input
                 id="password"
-                type={showPassword ? 'text' : 'password'}
+                type={
+                  showPassword
+                    ? 'text'
+                    : 'password'
+                }
                 value={password}
                 onChange={(event) =>
                   setPassword(event.target.value)
@@ -117,7 +237,9 @@ function Login() {
                 type="button"
                 className="password-toggle"
                 onClick={() =>
-                  setShowPassword(!showPassword)
+                  setShowPassword(
+                    !showPassword
+                  )
                 }
                 aria-label={
                   showPassword
@@ -145,14 +267,21 @@ function Login() {
             className="login-button"
             disabled={loading}
           >
-            {loading ? 'Ingresando...' : 'Iniciar sesión'}
+            {loading
+              ? 'Ingresando...'
+              : 'Iniciar sesión'}
           </button>
+
         </form>
 
         <div className="login-footer">
           SGCE · Gestión educativa
-          <span>Desarrollado por Jhilver</span>
+
+          <span>
+            Desarrollado por Jhilver
+          </span>
         </div>
+
       </section>
     </main>
   )

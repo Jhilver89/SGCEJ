@@ -57,6 +57,7 @@ function App() {
 
           {/* ==================================================
               ÁREA GENERAL DEL SISTEMA
+              DOCENTES / USUARIOS
           ================================================== */}
 
           <Route
@@ -117,11 +118,15 @@ function App() {
             }
           >
 
-            {/* Dashboard administrador */}
+            {/* ----------------------------------------------
+                DASHBOARD
+            ---------------------------------------------- */}
+
             <Route
               index
               element={<DashboardAdmin />}
             />
+
 
             {/* ----------------------------------------------
                 INSTITUCIÓN
@@ -131,6 +136,7 @@ function App() {
               path="institucion"
               element={<Institucion />}
             />
+
 
             {/* ----------------------------------------------
                 AÑOS ESCOLARES
@@ -142,10 +148,12 @@ function App() {
             />
 
             {/* Detalle del año escolar */}
+
             <Route
               path="anios-escolares/:id"
               element={<DetalleAnioEscolar />}
             />
+
 
             {/* ----------------------------------------------
                 GRADOS Y SECCIONES
@@ -156,6 +164,7 @@ function App() {
               element={<GradosSecciones />}
             />
 
+
             {/* ----------------------------------------------
                 ESTUDIANTES
             ---------------------------------------------- */}
@@ -165,14 +174,6 @@ function App() {
               element={<Estudiantes />}
             />
 
-            {/* ----------------------------------------------
-                MATRÍCULAS
-            ---------------------------------------------- */}
-
-            <Route
-              path="matriculas"
-              element={<Matriculas />}
-            />
 
             {/* ----------------------------------------------
                 DOCENTES
@@ -183,6 +184,47 @@ function App() {
               element={<Docentes />}
             />
 
+
+            {/* ----------------------------------------------
+                MATRÍCULAS
+            ---------------------------------------------- */}
+
+            <Route
+              path="matriculas"
+              element={<Matriculas />}
+            />
+
+
+            {/* ----------------------------------------------
+                SALIDAS
+            ---------------------------------------------- */}
+
+            <Route
+              path="salidas"
+              element={<Salidas />}
+            />
+
+
+            {/* ----------------------------------------------
+                INCIDENCIAS
+            ---------------------------------------------- */}
+
+            <Route
+              path="incidencias"
+              element={<Incidencias />}
+            />
+
+
+            {/* ----------------------------------------------
+                MENSAJES
+            ---------------------------------------------- */}
+
+            <Route
+              path="mensajes"
+              element={<Mensajes />}
+            />
+
+
             {/* ----------------------------------------------
                 USUARIOS
             ---------------------------------------------- */}
@@ -191,6 +233,7 @@ function App() {
               path="usuarios"
               element={<Usuarios />}
             />
+
 
             {/* ----------------------------------------------
                 REPORTES

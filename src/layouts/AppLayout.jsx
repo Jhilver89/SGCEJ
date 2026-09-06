@@ -1,16 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import {
-  BarChart3,
   BookOpen,
-  GraduationCap,
   LayoutDashboard,
   LogOut,
   MessageSquare,
-  Settings,
   ShieldCheck,
   UserRound,
-  Users,
-  ClipboardList,
   AlertTriangle,
 } from 'lucide-react'
 
@@ -18,28 +13,13 @@ import { useAuth } from '../context/AuthContext'
 import './AppLayout.css'
 
 function AppLayout() {
-  const { user, logout } = useAuth()
+  const { user, profile, logout } = useAuth()
 
   const menuItems = [
     {
       label: 'Dashboard',
       path: '/app',
       icon: LayoutDashboard,
-    },
-    {
-      label: 'Estudiantes',
-      path: '/app/estudiantes',
-      icon: Users,
-    },
-    {
-      label: 'Docentes',
-      path: '/app/docentes',
-      icon: GraduationCap,
-    },
-    {
-      label: 'Matrículas',
-      path: '/app/matriculas',
-      icon: ClipboardList,
     },
     {
       label: 'Salidas',
@@ -50,11 +30,6 @@ function AppLayout() {
       label: 'Incidencias',
       path: '/app/incidencias',
       icon: AlertTriangle,
-    },
-    {
-      label: 'Reportes',
-      path: '/app/reportes',
-      icon: BarChart3,
     },
     {
       label: 'Mensajes',
@@ -68,7 +43,12 @@ function AppLayout() {
 
       <aside className="sidebar">
 
+        {/* ==================================================
+            MARCA
+        ================================================== */}
+
         <div className="sidebar-brand">
+
           <div className="sidebar-logo">
             <ShieldCheck size={25} />
           </div>
@@ -77,7 +57,13 @@ function AppLayout() {
             <strong>SGCE</strong>
             <span>Gestión educativa</span>
           </div>
+
         </div>
+
+
+        {/* ==================================================
+            MENÚ
+        ================================================== */}
 
         <nav className="sidebar-nav">
 
@@ -86,6 +72,7 @@ function AppLayout() {
           </p>
 
           {menuItems.map((item) => {
+
             const Icon = item.icon
 
             return (
@@ -99,29 +86,24 @@ function AppLayout() {
                   }`
                 }
               >
+
                 <Icon size={19} />
-                <span>{item.label}</span>
+
+                <span>
+                  {item.label}
+                </span>
+
               </NavLink>
             )
+
           })}
 
-          <p className="sidebar-section-title">
-            SISTEMA
-          </p>
-
-          <NavLink
-            to="/app/configuracion"
-            className={({ isActive }) =>
-              `sidebar-link ${
-                isActive ? 'active' : ''
-              }`
-            }
-          >
-            <Settings size={19} />
-            <span>Configuración</span>
-          </NavLink>
-
         </nav>
+
+
+        {/* ==================================================
+            USUARIO / CERRAR SESIÓN
+        ================================================== */}
 
         <div className="sidebar-bottom">
 
@@ -132,34 +114,63 @@ function AppLayout() {
             </div>
 
             <div className="user-info">
-              <strong>Usuario</strong>
-              <span>{user?.email}</span>
+
+              <strong>
+                {profile
+                  ? `${profile.nombres || ''} ${profile.apellidos || ''}`.trim()
+                  : 'Usuario'}
+              </strong>
+
+              <span>
+                {user?.email || ''}
+              </span>
+
             </div>
 
           </div>
 
+
           <button
+            type="button"
             className="logout-button"
             onClick={logout}
           >
+
             <LogOut size={18} />
-            <span>Cerrar sesión</span>
+
+            <span>
+              Cerrar sesión
+            </span>
+
           </button>
 
         </div>
 
       </aside>
 
+
+      {/* ==================================================
+          CONTENIDO
+      ================================================== */}
+
       <main className="app-main">
 
         <header className="app-header">
+
           <div>
-            <h1>Dashboard</h1>
+
+            <h1>
+              Dashboard
+            </h1>
+
             <p>
               Resumen general del centro educativo
             </p>
+
           </div>
+
         </header>
+
 
         <section className="app-content">
           <Outlet />

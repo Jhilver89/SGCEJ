@@ -34,7 +34,7 @@ const adminMenu = [
     items: [
       {
         label: 'Años escolares',
-        path: '/admin/años-escolares',
+        path: '/admin/anios-escolares',
         icon: CalendarDays,
       },
       {
