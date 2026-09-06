@@ -1,12 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-  Eye,
-  EyeOff,
-  LockKeyhole,
-  Mail,
-  ShieldCheck,
-} from 'lucide-react'
+import { Eye, EyeOff, LockKeyhole, Mail, ShieldCheck } from 'lucide-react'
+
 import { supabase } from '../lib/supabase'
 import './Login.css'
 
@@ -19,18 +14,10 @@ function Login() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
     setError('')
-
-    if (!email.trim() || !password) {
-      setError(
-        'Ingresa tu correo electrónico y contraseña.'
-      )
-      return
-    }
-
     setLoading(true)
 
     try {
@@ -41,28 +28,14 @@ function Login() {
         })
 
       if (loginError) {
-        console.error(
-          'ERROR LOGIN SUPABASE:',
-          loginError
-        )
-
-        setError(loginError.message)
-        setLoading(false)
+        setError('Correo o contraseña incorrectos.')
         return
       }
 
-      const usuario = data?.user
-
-      if (!usuario) {
-        setError(
-          'No se pudo obtener la información del usuario.'
-        )
-
-        setLoading(false)
+      if (!data?.user) {
+        setError('No se pudo iniciar la sesión.')
         return
       }
-
-      console.log('LOGIN CORRECTO')
 
       // ==================================================
       // OBTENER PERFIL Y ROL
@@ -71,36 +44,31 @@ function Login() {
       const { data: perfil, error: perfilError } =
         await supabase
           .from('perfiles')
-          .select(
-            'id, nombres, apellidos, email, rol, activo, institucion_id'
-          )
-          .eq('id', usuario.id)
+          .select(`
+            id,
+            nombres,
+            apellidos,
+            email,
+            rol,
+            activo,
+            institucion_id
+          `)
+          .eq('id', data.user.id)
           .single()
 
-      if (perfilError) {
-        console.error(
-          'ERROR OBTENIENDO PERFIL:',
-          perfilError
-        )
-
+      if (perfilError || !perfil) {
         await supabase.auth.signOut()
-
-        setError(
-          'No se pudo cargar el perfil del usuario.'
-        )
-
-        setLoading(false)
+        setError('No se encontró el perfil del usuario.')
         return
       }
 
+      // ==================================================
+      // VALIDAR USUARIO ACTIVO
+      // ==================================================
+
       if (!perfil.activo) {
         await supabase.auth.signOut()
-
-        setError(
-          'Tu usuario está inactivo. Comunícate con el administrador.'
-        )
-
-        setLoading(false)
+        setError('El usuario se encuentra inactivo.')
         return
       }
 
@@ -109,137 +77,113 @@ function Login() {
       // ==================================================
 
       if (perfil.rol === 'administrador') {
-        console.log(
-          'REDIRECCIÓN: ADMINISTRADOR → /admin'
-        )
-
         navigate('/admin', { replace: true })
         return
       }
 
       if (perfil.rol === 'usuario') {
-        console.log(
-          'REDIRECCIÓN: USUARIO → /app'
-        )
-
         navigate('/app', { replace: true })
         return
       }
 
       // ==================================================
-      // ROL NO RECONOCIDO
+      // ROL NO VÁLIDO
       // ==================================================
 
-      console.error(
-        'ROL NO RECONOCIDO:',
-        perfil.rol
-      )
-
       await supabase.auth.signOut()
+      setError('El rol del usuario no es válido.')
 
-      setError(
-        'El usuario no tiene un rol válido configurado.'
-      )
-
-      setLoading(false)
-    } catch (error) {
-      console.error('ERROR INESPERADO LOGIN:', error)
-
-      await supabase.auth.signOut()
-
-      setError(
-        'Ocurrió un error al iniciar sesión.'
-      )
-
+    } catch (err) {
+      console.error(err)
+      setError('Ocurrió un error al iniciar sesión.')
+    } finally {
       setLoading(false)
     }
   }
 
   return (
-    <main className="login-page">
-      <section className="login-card">
+    <div className="login-page">
+
+      <div className="login-card">
 
         <div className="login-brand">
+
           <div className="login-logo">
-            <ShieldCheck
-              size={30}
-              strokeWidth={2}
-            />
+            <ShieldCheck size={30} />
           </div>
 
           <div>
-            <h1>SGCE</h1>
-
-            <span>
-              Sistema de Gestión del Centro Educativo
-            </span>
+            <strong>SGCE</strong>
+            <span>Gestión educativa</span>
           </div>
+
         </div>
 
-        <div className="login-heading">
-          <h2>Bienvenido</h2>
+        <div className="login-header">
+
+          <h1>Bienvenido</h1>
 
           <p>
-            Ingresa tus credenciales para continuar.
+            Ingresa tus credenciales para continuar
           </p>
+
         </div>
 
         <form
-          onSubmit={handleSubmit}
           className="login-form"
+          onSubmit={handleSubmit}
         >
 
           <div className="form-group">
+
             <label htmlFor="email">
               Correo electrónico
             </label>
 
             <div className="input-wrapper">
+
               <Mail size={19} />
 
               <input
                 id="email"
                 type="email"
                 value={email}
-                onChange={(event) =>
-                  setEmail(event.target.value)
-                }
-                placeholder="correo@ejemplo.com"
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="correo@vancouver.edu.pe"
                 autoComplete="email"
+                required
               />
+
             </div>
+
           </div>
 
+
           <div className="form-group">
+
             <label htmlFor="password">
               Contraseña
             </label>
 
             <div className="input-wrapper">
+
               <LockKeyhole size={19} />
 
               <input
                 id="password"
-                type={
-                  showPassword
-                    ? 'text'
-                    : 'password'
-                }
+                type={showPassword ? 'text' : 'password'}
                 value={password}
-                onChange={(event) =>
-                  setPassword(event.target.value)
-                }
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Ingresa tu contraseña"
                 autoComplete="current-password"
+                required
               />
 
               <button
                 type="button"
                 className="password-toggle"
                 onClick={() =>
-                  setShowPassword(
-                    !showPassword
-                  )
+                  setShowPassword(!showPassword)
                 }
                 aria-label={
                   showPassword
@@ -247,20 +191,26 @@ function Login() {
                     : 'Mostrar contraseña'
                 }
               >
+
                 {showPassword ? (
                   <EyeOff size={19} />
                 ) : (
                   <Eye size={19} />
                 )}
+
               </button>
+
             </div>
+
           </div>
+
 
           {error && (
             <div className="login-error">
               {error}
             </div>
           )}
+
 
           <button
             type="submit"
@@ -274,16 +224,14 @@ function Login() {
 
         </form>
 
-        <div className="login-footer">
-          SGCE · Gestión educativa
 
-          <span>
-            Desarrollado por Jhilver
-          </span>
+        <div className="login-footer">
+          Colegio Vancouver
         </div>
 
-      </section>
-    </main>
+      </div>
+
+    </div>
   )
 }
 
